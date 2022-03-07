@@ -23,7 +23,6 @@ public class HttpRequest {
 	private final Map<String, String> headerFields = new HashMap();
 	private final Map<String, String> queries = new HashMap();
 
-
 	public HttpMethod getMethod() {
 		return method;
 	}
@@ -61,6 +60,9 @@ public class HttpRequest {
 
 	public void setQuery(String key, String value) {
 		queries.put(key, value);
+	}
+	public Map<String, String> getQueries() {
+		return queries;
 	}
 
 	public void setHeader(String key, String value) {
