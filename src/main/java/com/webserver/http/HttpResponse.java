@@ -1,6 +1,8 @@
 package com.webserver.http;
 
 import com.webserver.exceptions.HttpExecutionException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.HashMap;
@@ -15,6 +17,9 @@ import java.util.Map;
  *   	                        [ message-body ]
  */
 public class HttpResponse {
+
+	private final static Logger LOGGER = LogManager.getLogger(HttpResponse.class);
+
 	private String httpVersion = "HTTP/1.1";
 	private HttpStatusCode httpStatusCode;
 
@@ -69,6 +74,7 @@ public class HttpResponse {
 
 		// Status line
 		printStream.println(httpVersion +  " " + httpStatusCode.code + " " + httpStatusCode.message);
+		LOGGER.info(httpVersion +  " " + httpStatusCode.code + " " + httpStatusCode.message);
 
 		// Headers
 		for (Map.Entry<String, String> entry: headerFields.entrySet()) {
