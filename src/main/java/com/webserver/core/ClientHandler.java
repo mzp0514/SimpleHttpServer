@@ -28,6 +28,9 @@ public class ClientHandler implements Runnable {
 	 */
 	private long lastRequestTimestamp;
 
+	private static final String TIMEOUT = String.format("timeout=%d",
+			ConfigurationManager.getInstance().getConfiguration().getTimeout());
+
 	public ClientHandler(Socket socket) {
 		this.socket = socket;
 		lastRequestTimestamp = System.currentTimeMillis();
@@ -123,8 +126,7 @@ public class ClientHandler implements Runnable {
 		if (request.getKeepAlive()) {
 			response.setKeepAlive(true);
 			response.setHeader("Connection", "keep-alive");
-			response.setHeader("Keep-Alive", "timeout=5");
-
+			response.setHeader("Keep-Alive", TIMEOUT);
 		}
 
 		// Generate response according to the request method

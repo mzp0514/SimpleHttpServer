@@ -46,7 +46,8 @@ maven package
 ```
 
 ```
-java -jar WebServer-1.0-SNAPSHOT.jar --conf Webserver.properties
+java -jar WebServer-1.0-SNAPSHOT.jar [--conf] [Webserver.properties]
+# The default configuration file is Webserver.properties
 ```
 
 ## Functions
@@ -141,5 +142,5 @@ If the client specifies `Connection: keep-alive` in the request message,
 - If the request is processed unsuccessfully, the connection will be closed. 
 - If the connection is idle for more than `timeout` seconds, the connection will be closed.
 
-If the keep-alive behavior is triggered, the response message will contain `Keep-Alive:timeout=5 Connection:keep-alive`.
+If the keep-alive behavior is triggered, the response message will contain `Keep-Alive:timeout=[timeout] Connection:keep-alive`.
 
